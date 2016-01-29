@@ -58,10 +58,12 @@ function resolveStores(options) {
 
   return _.map(stores, storeId => {
     if (!_.isString(storeId)) {
-      throw new Error(
-        'Store Id\'s must be strings. If you\'re migrating to v0.10 ' +
-        'you have probably forgotten to update listenTo'
-      );
+      // Assume `storeId` is a store instance.
+      // This is to help ease transition from old versions
+      // of Marty.
+      console.warn('Store Id\'s must be strings. If you\'re migrating to v0.10 ' +
+        'you have probably forgotten to update listenTo')
+      return storeId;
     }
 
     if (!app) {
