@@ -44,7 +44,7 @@ var StoreObserver = (function () {
       return store.addChangeListener(function (state, store) {
         var storeDisplayName = store.displayName || store.id;
 
-        log.trace('' + storeDisplayName + ' store has changed. ' + ('The ' + _this2.component.displayName + ' component (' + _this2.component.id + ') is updating'));
+        log.trace(storeDisplayName + ' store has changed. ' + ('The ' + _this2.component.displayName + ' component (' + _this2.component.id + ') is updating'));
 
         if (store && store.action) {
           store.action.addComponentHandler({
@@ -70,7 +70,11 @@ function resolveStores(options) {
 
   return _.map(stores, function (storeId) {
     if (!_.isString(storeId)) {
-      throw new Error('Store Id\'s must be strings. If you\'re migrating to v0.10 ' + 'you have probably forgotten to update listenTo');
+      // Assume `storeId` is a store instance.
+      // This is to help ease transition from old versions
+      // of Marty.
+      console.warn('Store Id\'s must be strings. If you\'re migrating to v0.10 ' + 'you have probably forgotten to update listenTo');
+      return storeId;
     }
 
     if (!app) {

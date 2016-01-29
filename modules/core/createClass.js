@@ -37,7 +37,6 @@ function get(_x, _x2, _x3) {
     var object = _x,
         property = _x2,
         receiver = _x3;
-    desc = _parent = getter = undefined;
     _again = false;
 
     var desc = Object.getOwnPropertyDescriptor(object, property);
@@ -50,6 +49,7 @@ function get(_x, _x2, _x3) {
         _x2 = property;
         _x3 = receiver;
         _again = true;
+        desc = _parent = undefined;
         continue _function;
       }
     } else if ('value' in desc && desc.writable) {

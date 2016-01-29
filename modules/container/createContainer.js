@@ -127,7 +127,7 @@ module.exports = function (React) {
     var Container = React.createClass(specification);
 
     Container.InnerComponent = InnerComponent;
-    Container.displayName = '' + innerComponentDisplayName + 'Container';
+    Container.displayName = innerComponentDisplayName + 'Container';
 
     return Container;
 
