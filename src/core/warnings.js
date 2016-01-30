@@ -3,7 +3,7 @@ let _ = require('../mindash');
 let warnings = {
   without: without,
   reservedFunction: true,
-  parseJSONDeprecated: true,
+  parseJSONDeprecated: false,
   stateIsNullOrUndefined: true,
   superNotCalledWithOptions: true,
   fetchDoneRenamedFetchFailed: true,
