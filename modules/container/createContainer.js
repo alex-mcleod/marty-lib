@@ -77,10 +77,10 @@ module.exports = function (React) {
         };
       },
       done: function done(results) {
-        return React.createElement(InnerComponent, _extends({ ref: 'innerComponent' }, this.props, results, { app: this.app }));
+        return React.createElement(InnerComponent, _extends({ ref: (e) => this.innerComponentRef = e }, this.props, results, { app: this.app }));
       },
       getInnerComponent: function getInnerComponent() {
-        return this.refs.innerComponent;
+        return this.innerComponentRef;
       },
       render: function render() {
         var container = this;
